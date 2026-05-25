@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="kfz-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAFAFA"/>
+      <stop offset="100%" stop-color="#E8E8E8"/>
+    </linearGradient>
+    <linearGradient id="kfz-hero" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1F2937"/>
+      <stop offset="100%" stop-color="#374151"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Browser frame -->
+  <rect x="0" y="0" width="800" height="500" rx="12" fill="#FDFBF7" stroke="#EAE3D7" stroke-width="1"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="800" height="36" rx="12" fill="#F2EDE3"/>
+  <rect x="0" y="24" width="800" height="12" fill="#F2EDE3"/>
+
+  <!-- Traffic lights -->
+  <circle cx="20" cy="18" r="5" fill="#E0A8A0"/>
+  <circle cx="38" cy="18" r="5" fill="#E5C589"/>
+  <circle cx="56" cy="18" r="5" fill="#A8C8A0"/>
+
+  <!-- URL pill -->
+  <rect x="270" y="9" width="260" height="18" rx="9" fill="#FAF7F2"/>
+  <text x="400" y="22" font-family="ui-monospace, monospace" font-size="10" fill="#8B877D" text-anchor="middle">emils-kfz-klinik.de</text>
+
+  <!-- Site content -->
+  <rect x="0" y="36" width="800" height="464" fill="url(#kfz-bg)"/>
+
+  <!-- Logo -->
+  <rect x="40" y="64" width="32" height="32" rx="4" fill="#C75B3C"/>
+  <text x="56" y="86" font-family="ui-sans-serif" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">K</text>
+  <rect x="84" y="74" width="120" height="10" rx="2" fill="#1F2937"/>
+
+  <!-- Nav -->
+  <rect x="540" y="76" width="40" height="6" rx="2" fill="#6B7280"/>
+  <rect x="600" y="76" width="50" height="6" rx="2" fill="#6B7280"/>
+  <rect x="670" y="76" width="40" height="6" rx="2" fill="#6B7280"/>
+  <rect x="725" y="68" width="40" height="20" rx="10" fill="#C75B3C"/>
+
+  <!-- Hero block -->
+  <rect x="40" y="120" width="720" height="200" rx="8" fill="url(#kfz-hero)"/>
+
+  <!-- Hero title -->
+  <rect x="80" y="160" width="380" height="18" rx="3" fill="#FFFFFF"/>
+  <rect x="80" y="188" width="280" height="18" rx="3" fill="#FFFFFF"/>
+
+  <!-- Hero subtitle -->
+  <rect x="80" y="226" width="340" height="6" rx="2" fill="#D1D5DB"/>
+  <rect x="80" y="240" width="300" height="6" rx="2" fill="#D1D5DB"/>
+
+  <!-- Hero CTA -->
+  <rect x="80" y="266" width="120" height="32" rx="16" fill="#C75B3C"/>
+  <text x="140" y="287" font-family="ui-sans-serif" font-size="11" font-weight="600" fill="#FFFFFF" text-anchor="middle">TERMIN BUCHEN</text>
+
+  <!-- Car silhouette (right side of hero) -->
+  <g opacity="0.25" transform="translate(540, 200)">
+    <rect x="0" y="40" width="180" height="40" rx="8" fill="#FFFFFF"/>
+    <path d="M 20 40 L 40 10 L 130 10 L 150 40 Z" fill="#FFFFFF"/>
+    <circle cx="40" cy="80" r="14" fill="#FFFFFF"/>
+    <circle cx="130" cy="80" r="14" fill="#FFFFFF"/>
+    <circle cx="40" cy="80" r="6" fill="#1F2937"/>
+    <circle cx="130" cy="80" r="6" fill="#1F2937"/>
+  </g>
+
+  <!-- Services row -->
+  <rect x="40" y="350" width="220" height="100" rx="6" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <circle cx="74" cy="384" r="14" fill="#FEE6DD"/>
+  <rect x="100" y="378" width="120" height="6" rx="2" fill="#1F2937"/>
+  <rect x="100" y="392" width="80" height="4" rx="1" fill="#9CA3AF"/>
+  <rect x="60" y="416" width="180" height="4" rx="1" fill="#6B7280"/>
+  <rect x="60" y="426" width="160" height="4" rx="1" fill="#6B7280"/>
+
+  <rect x="290" y="350" width="220" height="100" rx="6" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <circle cx="324" cy="384" r="14" fill="#FEE6DD"/>
+  <rect x="350" y="378" width="100" height="6" rx="2" fill="#1F2937"/>
+  <rect x="350" y="392" width="80" height="4" rx="1" fill="#9CA3AF"/>
+  <rect x="310" y="416" width="180" height="4" rx="1" fill="#6B7280"/>
+  <rect x="310" y="426" width="140" height="4" rx="1" fill="#6B7280"/>
+
+  <rect x="540" y="350" width="220" height="100" rx="6" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <circle cx="574" cy="384" r="14" fill="#FEE6DD"/>
+  <rect x="600" y="378" width="130" height="6" rx="2" fill="#1F2937"/>
+  <rect x="600" y="392" width="80" height="4" rx="1" fill="#9CA3AF"/>
+  <rect x="560" y="416" width="180" height="4" rx="1" fill="#6B7280"/>
+  <rect x="560" y="426" width="160" height="4" rx="1" fill="#6B7280"/>
+</svg>

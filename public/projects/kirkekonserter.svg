@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="kk-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1F2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Browser frame -->
+  <rect x="0" y="0" width="800" height="500" rx="12" fill="#FDFBF7" stroke="#EAE3D7" stroke-width="1"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="800" height="36" rx="12" fill="#F2EDE3"/>
+  <rect x="0" y="24" width="800" height="12" fill="#F2EDE3"/>
+
+  <!-- Traffic lights -->
+  <circle cx="20" cy="18" r="5" fill="#E0A8A0"/>
+  <circle cx="38" cy="18" r="5" fill="#E5C589"/>
+  <circle cx="56" cy="18" r="5" fill="#A8C8A0"/>
+
+  <!-- URL pill -->
+  <rect x="280" y="9" width="240" height="18" rx="9" fill="#FAF7F2"/>
+  <text x="400" y="22" font-family="ui-monospace, monospace" font-size="10" fill="#8B877D" text-anchor="middle">kirkekonserter.com</text>
+
+  <!-- Site content -->
+  <rect x="0" y="36" width="800" height="464" fill="url(#kk-bg)"/>
+
+  <!-- Nav -->
+  <rect x="40" y="64" width="100" height="10" rx="2" fill="#E5C589"/>
+  <rect x="600" y="66" width="40" height="6" rx="2" fill="#9CA3AF"/>
+  <rect x="660" y="66" width="50" height="6" rx="2" fill="#9CA3AF"/>
+  <rect x="720" y="66" width="40" height="6" rx="2" fill="#9CA3AF"/>
+
+  <!-- Hero title -->
+  <rect x="40" y="120" width="500" height="22" rx="3" fill="#F9FAFB"/>
+  <rect x="40" y="152" width="380" height="22" rx="3" fill="#F9FAFB"/>
+
+  <!-- Subtitle -->
+  <rect x="40" y="200" width="440" height="6" rx="2" fill="#9CA3AF"/>
+  <rect x="40" y="212" width="360" height="6" rx="2" fill="#9CA3AF"/>
+
+  <!-- Date pill highlight -->
+  <rect x="40" y="240" width="120" height="26" rx="13" fill="#E5C589"/>
+  <text x="100" y="257" font-family="ui-sans-serif" font-size="10" font-weight="600" fill="#1F2937" text-anchor="middle">15. JUNI 2026</text>
+
+  <!-- Concert cards (3 in row, stacked dates) -->
+  <rect x="40" y="310" width="230" height="140" rx="8" fill="#374151" stroke="#4B5563" stroke-width="1"/>
+  <rect x="60" y="330" width="40" height="20" rx="3" fill="#E5C589"/>
+  <text x="80" y="344" font-family="ui-mono" font-size="9" fill="#1F2937" text-anchor="middle">JUN</text>
+  <rect x="60" y="360" width="160" height="8" rx="2" fill="#F9FAFB"/>
+  <rect x="60" y="376" width="120" height="6" rx="2" fill="#9CA3AF"/>
+  <rect x="60" y="400" width="190" height="4" rx="1" fill="#6B7280"/>
+  <rect x="60" y="412" width="170" height="4" rx="1" fill="#6B7280"/>
+
+  <rect x="285" y="310" width="230" height="140" rx="8" fill="#374151" stroke="#4B5563" stroke-width="1"/>
+  <rect x="305" y="330" width="40" height="20" rx="3" fill="#E5C589"/>
+  <text x="325" y="344" font-family="ui-mono" font-size="9" fill="#1F2937" text-anchor="middle">JUL</text>
+  <rect x="305" y="360" width="180" height="8" rx="2" fill="#F9FAFB"/>
+  <rect x="305" y="376" width="130" height="6" rx="2" fill="#9CA3AF"/>
+  <rect x="305" y="400" width="190" height="4" rx="1" fill="#6B7280"/>
+  <rect x="305" y="412" width="150" height="4" rx="1" fill="#6B7280"/>
+
+  <rect x="530" y="310" width="230" height="140" rx="8" fill="#374151" stroke="#4B5563" stroke-width="1"/>
+  <rect x="550" y="330" width="40" height="20" rx="3" fill="#E5C589"/>
+  <text x="570" y="344" font-family="ui-mono" font-size="9" fill="#1F2937" text-anchor="middle">AUG</text>
+  <rect x="550" y="360" width="140" height="8" rx="2" fill="#F9FAFB"/>
+  <rect x="550" y="376" width="160" height="6" rx="2" fill="#9CA3AF"/>
+  <rect x="550" y="400" width="190" height="4" rx="1" fill="#6B7280"/>
+  <rect x="550" y="412" width="180" height="4" rx="1" fill="#6B7280"/>
+</svg>

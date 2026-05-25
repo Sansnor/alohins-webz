@@ -1,0 +1,154 @@
+---
+const facts = [
+  {
+    number: '2018',
+    label: 'startet å bygge nettsider',
+  },
+  {
+    number: '3+ land',
+    label: 'kunder fra Norge og Tyskland',
+  },
+  {
+    number: '1 person',
+    label: 'du jobber direkte med',
+  },
+];
+---
+
+<section id="om" class="about section">
+  <div class="container">
+    <div class="about__grid">
+
+      <div class="about__intro">
+        <p class="eyebrow about__eyebrow">
+          <span class="about__eyedot" aria-hidden="true"></span>
+          Om meg
+        </p>
+        <h2 class="about__heading">
+          Hei, jeg er Oleg.
+        </h2>
+        <p class="about__lead">
+          Fascinasjonen for web startet allerede i 1996.
+          Til daglig jobber jeg med kirkemusikk i Fosen, men siden 2018
+          har lidenskapen fått eget liv — å bygge nettsider for de jeg tror på.
+        </p>
+      </div>
+
+      <div class="about__body">
+        <p>
+          Jeg jobber alene fra Rissa, og det gjør at du får direkte
+          kontakt med personen som faktisk bygger nettsiden din.
+          Ingen prosjektledere mellom oss, ingen overraskelser i fakturaen.
+        </p>
+        <p>
+          Du betaler for det du trenger — og velger selv om du vil ha
+          drift og hosting hos meg etterpå.
+        </p>
+
+        <div class="about__facts">
+          {facts.map((fact) => (
+            <div class="fact">
+              <div class="fact__number">{fact.number}</div>
+              <div class="fact__label">{fact.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .about__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  /* —— Intro (left column) —— */
+  .about__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .about__eyedot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+
+  .about__heading {
+    font-size: clamp(2.25rem, 5vw, 3rem);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-6);
+  }
+
+  .about__lead {
+    font-size: var(--text-body-lg);
+    line-height: var(--leading-normal);
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  /* —— Body (right column) —— */
+  .about__body {
+    font-size: var(--text-body);
+    line-height: var(--leading-loose);
+    color: var(--color-text-secondary);
+    padding-top: var(--space-2);
+  }
+
+  .about__body p {
+    margin-bottom: var(--space-6);
+    max-width: 50ch;
+  }
+
+  .about__body p:last-of-type {
+    margin-bottom: var(--space-12);
+  }
+
+  /* —— Facts row —— */
+  .about__facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .fact__number {
+    font-size: 1.625rem;
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-primary);
+    line-height: 1;
+    margin-bottom: var(--space-2);
+    font-feature-settings: 'tnum';
+  }
+
+  .fact__label {
+    font-size: var(--text-small);
+    line-height: var(--leading-snug);
+    color: var(--color-text-tertiary);
+  }
+
+  /* —— Responsive —— */
+  @media (max-width: 860px) {
+    .about__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    .about__facts {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+  }
+</style>

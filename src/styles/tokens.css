@@ -1,0 +1,90 @@
+/* ============================================
+   ALOHINS WEBZ — DESIGN TOKENS
+   Endre verdier her, og hele nettsiden følger med.
+   ============================================ */
+
+:root {
+  /* ——— COLOR · BACKGROUND ——— */
+  --color-bg-base:       #FAF7F2;   /* page background */
+  --color-bg-surface:    #FDFBF7;   /* cards, elevated surfaces */
+  --color-bg-elevated:   #F2EDE3;   /* subtle highlight, hover */
+  --color-bg-inverse:    #1A1A1A;   /* dark sections (footer etc) */
+
+  /* ——— COLOR · TEXT ——— */
+  --color-text-primary:   #1A1A1A;
+  --color-text-secondary: #57544C;
+  --color-text-tertiary:  #8B877D;
+  --color-text-inverse:   #FAF7F2;  /* text on dark backgrounds */
+
+  /* ——— COLOR · ACCENT (terrakotta) ——— */
+  --color-accent:         #C75B3C;
+  --color-accent-hover:   #B14E32;
+  --color-accent-soft:    #F4DCD0;  /* tint for backgrounds, hover states */
+
+  /* ——— COLOR · BORDERS ——— */
+  --color-border:        #EAE3D7;
+  --color-border-strong: #D4CCB8;
+  --color-border-dark:   #1A1A1A;
+
+  /* ——— TYPOGRAPHY ——— */
+  --font-sans: 'Geist Variable', 'Geist', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Type scale (fluid clamps for responsiveness) */
+  --text-display:  clamp(2.75rem, 7.5vw, 5rem);    /* 44 → 80px */
+  --text-h1:       clamp(2.25rem, 5vw, 3rem);      /* 36 → 48px */
+  --text-h2:       clamp(1.5rem, 3vw, 2rem);       /* 24 → 32px */
+  --text-h3:       1.375rem;                        /* 22px */
+  --text-body-lg:  1.125rem;                        /* 18px */
+  --text-body:     1rem;                            /* 16px */
+  --text-small:    0.875rem;                        /* 14px */
+  --text-eyebrow:  0.6875rem;                       /* 11px */
+
+  /* Line heights */
+  --leading-tight:  0.98;
+  --leading-snug:   1.15;
+  --leading-normal: 1.55;
+  --leading-loose:  1.7;
+
+  /* Letter spacing */
+  --tracking-display: -0.035em;
+  --tracking-tight:   -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.12em;
+
+  /* Font weights (Geist Variable supports any) */
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold: 600;
+
+  /* ——— SPACING (4px base) ——— */
+  --space-1:  0.25rem;   /* 4 */
+  --space-2:  0.5rem;    /* 8 */
+  --space-3:  0.75rem;   /* 12 */
+  --space-4:  1rem;      /* 16 */
+  --space-6:  1.5rem;    /* 24 */
+  --space-8:  2rem;      /* 32 */
+  --space-12: 3rem;      /* 48 */
+  --space-16: 4rem;      /* 64 */
+  --space-24: 6rem;      /* 96 */
+  --space-32: 8rem;      /* 128 */
+  --space-40: 10rem;     /* 160 */
+
+  /* ——— RADIUS ——— */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  16px;
+  --radius-full: 999px;
+
+  /* ——— LAYOUT ——— */
+  --container-max: 1280px;
+  --container-pad: clamp(1.25rem, 4vw, 2.5rem);
+  --section-pad-y: clamp(4rem, 10vw, 8rem);
+
+  /* ——— TRANSITIONS ——— */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast:   180ms;
+  --duration-normal: 280ms;
+  --duration-slow:   480ms;
+}

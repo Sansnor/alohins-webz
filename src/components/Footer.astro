@@ -1,0 +1,122 @@
+---
+import Logo from './Logo.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <Logo size="lg" />
+      <p class="footer__tagline">
+        Nettsider fra Rissa<br />til hele Norge.
+      </p>
+    </div>
+
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h4 class="footer__heading">Side</h4>
+        <a href="#tjenester" class="footer__link">Tjenester</a>
+        <a href="#prosjekter" class="footer__link">Prosjekter</a>
+        <a href="#om" class="footer__link">Om</a>
+        <a href="#kontakt" class="footer__link">Kontakt</a>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__heading">Kontakt</h4>
+        <a href="mailto:post@alohins-webz.no" class="footer__link">post@alohins-webz.no</a>
+        <a href="tel:+4746647851" class="footer__link">+47 46 64 78 51</a>
+        <span class="footer__meta">Rissa, Trøndelag</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer__bottom">
+    <span>© {year} Alohins Webz</span>
+    <a href="#" class="footer__link footer__link--muted">Personvern</a>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: var(--space-24);
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-8);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: var(--space-12);
+    margin-bottom: var(--space-12);
+  }
+
+  .footer__brand .logo {
+    margin-bottom: var(--space-4);
+  }
+
+  .footer__tagline {
+    font-size: var(--text-small);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-snug);
+  }
+
+  .footer__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+  .footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .footer__heading {
+    font-size: var(--text-eyebrow);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-2);
+  }
+
+  .footer__link {
+    font-size: var(--text-small);
+    color: var(--color-text-secondary);
+    transition: color var(--duration-fast) var(--ease-out);
+    width: fit-content;
+  }
+
+  .footer__link:hover {
+    color: var(--color-accent);
+  }
+
+  .footer__link--muted {
+    color: var(--color-text-tertiary);
+  }
+
+  .footer__meta {
+    font-size: var(--text-small);
+    color: var(--color-text-tertiary);
+  }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--text-small);
+    color: var(--color-text-tertiary);
+  }
+
+  @media (max-width: 720px) {
+    .footer__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+  }
+</style>

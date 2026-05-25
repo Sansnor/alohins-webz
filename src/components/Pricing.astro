@@ -1,0 +1,363 @@
+---
+const plans = [
+  {
+    name: 'Enkel',
+    tagline: 'Perfekt for å komme i gang',
+    price: '8 900',
+    period: 'fra',
+    features: [
+      'Inntil 5 sider',
+      'Mobiloptimalisert design',
+      'Kontaktskjema',
+      'SEO grunnpakke',
+      'Google Business-oppsett',
+      '30 dagers support',
+    ],
+    cta: 'Start her',
+    featured: false,
+  },
+  {
+    name: 'Bedrift',
+    tagline: 'For deg som mener alvor',
+    price: '16 900',
+    period: 'fra',
+    features: [
+      'Inntil 12 sider',
+      'Skreddersydd design',
+      'Blog / nyhetsmodul',
+      'Avansert SEO',
+      'Google Analytics',
+      '60 dagers support',
+      'Opplæring i CMS',
+    ],
+    cta: 'Start her',
+    featured: true,
+  },
+  {
+    name: 'Skreddersydd',
+    tagline: 'Komplett digital tilstedeværelse',
+    price: '28 000',
+    period: 'fra',
+    features: [
+      'Ubegrenset sider',
+      'E-handel mulig',
+      'Egne integrasjoner',
+      'Premium animasjoner',
+      '6 måneders support',
+      'Månedlig oppfølging',
+    ],
+    cta: 'Be om tilbud',
+    featured: false,
+  },
+];
+---
+
+<section id="priser" class="pricing section">
+  <div class="container">
+    <p class="eyebrow pricing__eyebrow">
+      <span class="pricing__eyedot" aria-hidden="true"></span>
+      Priser
+    </p>
+    <h2 class="pricing__heading">Tre pakker. Ingen overraskelser.</h2>
+    <p class="pricing__lead">
+      Velg pakken som passer din bedrift — eller send meg en melding,
+      så finner vi løsningen sammen.
+    </p>
+
+    <div class="pricing__grid">
+      {plans.map((plan) => (
+        <article class={`plan ${plan.featured ? 'plan--featured' : ''}`}>
+          {plan.featured && (
+            <div class="plan__badge">Mest populær</div>
+          )}
+
+          <div class="plan__head">
+            <h3 class="plan__name">{plan.name}</h3>
+            <p class="plan__tagline">{plan.tagline}</p>
+          </div>
+
+          <div class="plan__price">
+            <span class="plan__price-from">{plan.period}</span>
+            <span class="plan__price-amount">{plan.price}</span>
+            <span class="plan__price-currency">kr</span>
+          </div>
+
+          <ul class="plan__features">
+            {plan.features.map((feature) => (
+              <li class="plan__feature">
+                <span class="plan__tick" aria-hidden="true">
+                  <svg viewBox="0 0 14 14" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 7l3 3 7-7" />
+                  </svg>
+                </span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a href="#kontakt" class={`plan__cta ${plan.featured ? 'plan__cta--primary' : 'plan__cta--ghost'}`}>
+            {plan.cta}
+            <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <p class="pricing__note">
+      Alle priser er eks. mva. Domene og hosting kommer i tillegg
+      (typisk 1 200 – 2 400 kr/år). Betalingsplan tilgjengelig på forespørsel.
+    </p>
+  </div>
+</section>
+
+<style>
+  .pricing__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .pricing__eyedot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+
+  .pricing__heading {
+    font-size: var(--text-h1);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-4);
+    max-width: 18ch;
+  }
+
+  .pricing__lead {
+    font-size: var(--text-body-lg);
+    line-height: var(--leading-normal);
+    color: var(--color-text-secondary);
+    max-width: 40em;
+    margin-bottom: var(--space-12);
+  }
+
+  .pricing__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    align-items: stretch;
+  }
+
+  /* —— Plan card —— */
+  .plan {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-8) var(--space-6) var(--space-6);
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: transform var(--duration-normal) var(--ease-out),
+                box-shadow var(--duration-normal) var(--ease-out);
+  }
+
+  .plan:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px -16px rgba(26, 26, 26, 0.1);
+  }
+
+  .plan--featured {
+    background-color: var(--color-text-primary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-text-primary);
+  }
+
+  .plan__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 14px;
+    font-size: var(--text-eyebrow);
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-inverse);
+    background-color: var(--color-accent);
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+  }
+
+  /* —— Head —— */
+  .plan__head {
+    margin-bottom: var(--space-6);
+  }
+
+  .plan__name {
+    font-size: 1.375rem;
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-1);
+  }
+
+  .plan__tagline {
+    font-size: var(--text-small);
+    color: var(--color-text-secondary);
+  }
+
+  .plan--featured .plan__tagline {
+    color: rgba(250, 247, 242, 0.7);
+  }
+
+  /* —— Price —— */
+  .plan__price {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .plan--featured .plan__price {
+    border-bottom-color: rgba(250, 247, 242, 0.15);
+  }
+
+  .plan__price-from {
+    font-size: var(--text-small);
+    color: var(--color-text-tertiary);
+  }
+
+  .plan--featured .plan__price-from {
+    color: rgba(250, 247, 242, 0.6);
+  }
+
+  .plan__price-amount {
+    font-size: 2.25rem;
+    font-weight: var(--weight-medium);
+    letter-spacing: -0.025em;
+    font-feature-settings: 'tnum';
+  }
+
+  .plan__price-currency {
+    font-size: var(--text-body);
+    color: var(--color-text-tertiary);
+    font-weight: var(--weight-medium);
+  }
+
+  .plan--featured .plan__price-currency {
+    color: rgba(250, 247, 242, 0.7);
+  }
+
+  /* —— Features —— */
+  .plan__features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-8);
+    flex: 1;
+  }
+
+  .plan__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    font-size: var(--text-small);
+    line-height: var(--leading-snug);
+    color: var(--color-text-secondary);
+  }
+
+  .plan--featured .plan__feature {
+    color: rgba(250, 247, 242, 0.85);
+  }
+
+  .plan__tick {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent);
+    margin-top: 1px;
+  }
+
+  .plan--featured .plan__tick {
+    background-color: rgba(199, 91, 60, 0.22);
+    color: var(--color-accent);
+  }
+
+  /* —— CTA —— */
+  .plan__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    font-size: var(--text-small);
+    font-weight: var(--weight-medium);
+    border-radius: var(--radius-full);
+    transition: background-color var(--duration-fast) var(--ease-out),
+                color var(--duration-fast) var(--ease-out),
+                transform var(--duration-fast) var(--ease-out);
+  }
+
+  .plan__cta svg {
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+
+  .plan__cta:hover svg {
+    transform: translateX(3px);
+  }
+
+  .plan__cta--ghost {
+    background-color: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-strong);
+  }
+
+  .plan__cta--ghost:hover {
+    background-color: var(--color-text-primary);
+    color: var(--color-text-inverse);
+    border-color: var(--color-text-primary);
+  }
+
+  .plan__cta--primary {
+    background-color: var(--color-accent);
+    color: var(--color-text-inverse);
+  }
+
+  .plan__cta--primary:hover {
+    background-color: var(--color-accent-hover);
+  }
+
+  /* —— Note —— */
+  .pricing__note {
+    margin-top: var(--space-8);
+    font-size: var(--text-small);
+    color: var(--color-text-tertiary);
+    text-align: center;
+    max-width: 56em;
+    margin-inline: auto;
+  }
+
+  /* —— Responsive —— */
+  @media (max-width: 980px) {
+    .pricing__grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin-inline: auto;
+    }
+
+    .plan--featured {
+      margin-top: var(--space-4);
+    }
+  }
+</style>

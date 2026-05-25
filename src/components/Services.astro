@@ -1,0 +1,182 @@
+---
+const services = [
+  {
+    num: '01',
+    label: 'Nettsider',
+    title: 'Nettsider som virker',
+    body: 'Skreddersydde nettsider bygget for å bli funnet, brukt og husket. Fra én landingsside til en komplett bedriftsløsning.',
+    points: [
+      'Mobilvennlig design',
+      'Rask lasting, lav vekt',
+      'Enkel å oppdatere selv',
+    ],
+  },
+  {
+    num: '02',
+    label: 'Synlighet',
+    title: 'SEO & markedsføring',
+    body: 'Det hjelper lite med en flott nettside hvis ingen finner den. Jeg bygger SEO inn fra starten og hjelper deg å bli synlig der kundene dine søker.',
+    points: [
+      'Søkeordsanalyse',
+      'Google Business-profil',
+      'Analyse og målinger',
+    ],
+  },
+  {
+    num: '03',
+    label: 'Support',
+    title: 'Vedlikehold & support',
+    body: 'Tekniske oppdateringer, sikkerhet, små endringer underveis. Du fokuserer på arbeidet ditt — jeg tar meg av resten.',
+    points: [
+      'Trygge sikkerhetsoppdateringer',
+      'Innholdsoppdateringer',
+      'En person å ringe',
+    ],
+  },
+];
+---
+
+<section id="tjenester" class="services section">
+  <div class="container">
+    <p class="eyebrow services__eyebrow">
+      <span class="services__eyedot" aria-hidden="true"></span>
+      Tjenester
+    </p>
+    <h2 class="services__heading">Tre måter jeg kan hjelpe deg på.</h2>
+    <p class="services__lead">
+      Alt fra én landingsside til en komplett digital tilstedeværelse —
+      bygget for å bli funnet, brukt og husket.
+    </p>
+
+    <div class="services__grid">
+      {services.map((svc) => (
+        <article class="svc">
+          <div class="svc__num">{svc.num} / {svc.label}</div>
+          <h3 class="svc__title">{svc.title}</h3>
+          <p class="svc__body">{svc.body}</p>
+          <ul class="svc__list">
+            {svc.points.map((point) => (
+              <li class="svc__list-item">
+                <span class="svc__tick" aria-hidden="true">
+                  <svg viewBox="0 0 14 14" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 7l3 3 7-7" />
+                  </svg>
+                </span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .services__eyedot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+
+  .services__heading {
+    font-size: var(--text-h1);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    max-width: 18ch;
+    margin-bottom: var(--space-4);
+  }
+
+  .services__lead {
+    font-size: var(--text-body-lg);
+    line-height: var(--leading-normal);
+    color: var(--color-text-secondary);
+    max-width: 36em;
+    margin-bottom: var(--space-12);
+  }
+
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background-color: var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .svc {
+    background-color: var(--color-bg-base);
+    padding: var(--space-8) var(--space-6) var(--space-8);
+    transition: background-color var(--duration-normal) var(--ease-out);
+  }
+
+  .svc:hover {
+    background-color: var(--color-bg-surface);
+  }
+
+  .svc__num {
+    font-size: var(--text-small);
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    margin-bottom: var(--space-16);
+    font-feature-settings: 'tnum';
+  }
+
+  .svc__title {
+    font-size: var(--text-h3);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-3);
+  }
+
+  .svc__body {
+    font-size: var(--text-small);
+    line-height: var(--leading-normal);
+    color: var(--color-text-secondary);
+  }
+
+  .svc__list {
+    list-style: none;
+    margin-top: var(--space-6);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .svc__list-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-small);
+    color: var(--color-text-secondary);
+  }
+
+  .svc__tick {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 860px) {
+    .services__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

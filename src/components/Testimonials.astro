@@ -1,0 +1,201 @@
+---
+// Når du får sitater fra Mølnargården og Kirkekonserter,
+// fjern kommentarene rundt de to neste objektene — seksjonen
+// går automatisk fra featured-modus til 3-kolonner grid.
+
+const testimonials = [
+  {
+    quote: 'Ich bin äußerst zufrieden mit den Webdesign-Services, die Alohins Webz bereitgestellt hat. Die Website sieht fantastisch aus und ist benutzerfreundlich.',
+    translation: 'Jeg er svært fornøyd med webdesign-tjenestene Alohins Webz har levert. Nettsiden ser fantastisk ut og er brukervennlig.',
+    author: 'Emilian Nowakowski',
+    role: 'Eier, Emils KFZ Klinik',
+    location: 'Tyskland',
+    language: 'DE',
+  },
+  // {
+  //   quote: '[Sitat fra Mølnargården — Bjugn Bygdatunlag]',
+  //   translation: null,
+  //   author: 'Navn',
+  //   role: 'Mølnargården',
+  //   location: 'Bjugn, Trøndelag',
+  //   language: 'NB',
+  // },
+  // {
+  //   quote: '[Sitat fra Kirkekonserter]',
+  //   translation: null,
+  //   author: 'Navn',
+  //   role: 'Kirkekonserter i Fosen',
+  //   location: 'Fosen, Trøndelag',
+  //   language: 'NB',
+  // },
+];
+
+const isFeatured = testimonials.length === 1;
+---
+
+<section id="anbefalinger" class="testimonials section" data-mode={isFeatured ? 'featured' : 'grid'}>
+  <div class="container">
+    <p class="eyebrow testimonials__eyebrow">
+      <span class="testimonials__eyedot" aria-hidden="true"></span>
+      Anbefalinger
+    </p>
+
+    {isFeatured ? (
+      <h2 class="testimonials__heading">Ord fra en fornøyd kunde.</h2>
+    ) : (
+      <h2 class="testimonials__heading">Ord fra fornøyde kunder.</h2>
+    )}
+
+    <div class={`testimonials__list ${isFeatured ? 'testimonials__list--featured' : 'testimonials__list--grid'}`}>
+      {testimonials.map((t) => (
+        <figure class="testimonial">
+          <span class="testimonial__quotemark" aria-hidden="true">"</span>
+
+          <blockquote class="testimonial__quote" lang={t.language.toLowerCase()}>
+            {t.quote}
+          </blockquote>
+
+          {t.translation && (
+            <p class="testimonial__translation" aria-label="Oversatt til norsk">
+              {t.translation}
+            </p>
+          )}
+
+          <figcaption class="testimonial__cite">
+            <div class="testimonial__author">{t.author}</div>
+            <div class="testimonial__meta">
+              <span>{t.role}</span>
+              <span class="testimonial__meta-sep" aria-hidden="true">·</span>
+              <span>{t.location}</span>
+            </div>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    background-color: var(--color-bg-elevated);
+  }
+
+  .testimonials__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .testimonials__eyedot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+
+  .testimonials__heading {
+    font-size: var(--text-h1);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-12);
+    max-width: 18ch;
+  }
+
+  /* —— Featured mode (1 testimonial, centered, large) —— */
+  .testimonials__list--featured {
+    max-width: 820px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .testimonials__list--featured .testimonial__quote {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.35;
+  }
+
+  /* —— Grid mode (2+ testimonials) —— */
+  .testimonials__list--grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  .testimonials__list--grid .testimonial {
+    background-color: var(--color-bg-surface);
+    padding: var(--space-8) var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .testimonials__list--grid .testimonial__quote {
+    font-size: var(--text-body);
+    line-height: var(--leading-normal);
+  }
+
+  /* —— Quote elements —— */
+  .testimonial {
+    position: relative;
+  }
+
+  .testimonial__quotemark {
+    display: inline-block;
+    font-family: 'Geist Variable', serif;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--color-accent);
+    margin-bottom: var(--space-2);
+    font-weight: 500;
+  }
+
+  .testimonial__quote {
+    font-weight: var(--weight-regular);
+    color: var(--color-text-primary);
+    letter-spacing: -0.005em;
+    margin-bottom: var(--space-4);
+    text-wrap: balance;
+    font-style: normal;
+  }
+
+  .testimonial__translation {
+    font-size: var(--text-small);
+    line-height: var(--leading-normal);
+    color: var(--color-text-tertiary);
+    font-style: italic;
+    margin-bottom: var(--space-6);
+    max-width: 56ch;
+    margin-inline: auto;
+  }
+
+  .testimonial__cite {
+    font-style: normal;
+  }
+
+  .testimonial__author {
+    font-size: var(--text-body);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-primary);
+    margin-bottom: 2px;
+  }
+
+  .testimonial__meta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-small);
+    color: var(--color-text-tertiary);
+  }
+
+  .testimonial__meta-sep {
+    color: var(--color-border-strong);
+  }
+
+  /* —— Responsive —— */
+  @media (max-width: 860px) {
+    .testimonials__list--grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+</style>

@@ -1,0 +1,128 @@
+---
+const steps = [
+  {
+    num: '01',
+    label: 'Strategi',
+    title: 'Forstå målet ditt',
+    body: 'Før vi tegner én eneste pixel: hvem snakker du til, hva vil du de skal gjøre, og hvorfor skal de velge akkurat deg?',
+  },
+  {
+    num: '02',
+    label: 'Design',
+    title: 'Ren, ærlig, mobilvennlig',
+    body: 'Design som setter innholdet ditt i sentrum — ikke pynt for pyntens skyld. Hver detalj har en grunn til å være der.',
+  },
+  {
+    num: '03',
+    label: 'Lansering',
+    title: 'Du eier alt',
+    body: 'Jeg gir deg opplæring så du kan oppdatere sida selv — uten å være låst til meg. Ingen abonnementer du ikke trenger.',
+  },
+];
+---
+
+<section id="slik-jobber-jeg" class="approach section">
+  <div class="container">
+    <p class="eyebrow approach__eyebrow">
+      <span class="approach__eyedot" aria-hidden="true"></span>
+      Slik jobber jeg
+    </p>
+    <h2 class="approach__heading">Tre prinsipper. Ingen overraskelser.</h2>
+    <p class="approach__lead">
+      Et tydelig forløp fra første samtale til lansering —
+      så du alltid vet hva som skjer videre.
+    </p>
+
+    <div class="approach__grid">
+      {steps.map((step) => (
+        <article class="step">
+          <span class="step__num">{step.num} — {step.label}</span>
+          <h3 class="step__title">{step.title}</h3>
+          <p class="step__body">{step.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .approach {
+    background-color: var(--color-bg-elevated);
+  }
+
+  .approach__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .approach__eyedot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+
+  .approach__heading {
+    font-size: var(--text-h1);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    max-width: 20ch;
+    margin-bottom: var(--space-4);
+  }
+
+  .approach__lead {
+    font-size: var(--text-body-lg);
+    line-height: var(--leading-normal);
+    color: var(--color-text-secondary);
+    max-width: 36em;
+    margin-bottom: var(--space-12);
+  }
+
+  .approach__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+
+  .step {
+    position: relative;
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--color-text-primary);
+  }
+
+  .step__num {
+    position: absolute;
+    top: -0.7em;
+    left: 0;
+    background-color: var(--color-bg-elevated);
+    padding-right: var(--space-3);
+    font-size: var(--text-small);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-primary);
+    letter-spacing: 0.02em;
+    font-feature-settings: 'tnum';
+  }
+
+  .step__title {
+    font-size: 1.25rem;
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-2);
+  }
+
+  .step__body {
+    font-size: var(--text-small);
+    line-height: var(--leading-loose);
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 860px) {
+    .approach__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-12);
+    }
+  }
+</style>

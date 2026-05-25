@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="mln-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5EFE0"/>
+      <stop offset="100%" stop-color="#E8DDC7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Browser frame -->
+  <rect x="0" y="0" width="800" height="500" rx="12" fill="#FDFBF7" stroke="#EAE3D7" stroke-width="1"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="800" height="36" rx="12" fill="#F2EDE3"/>
+  <rect x="0" y="24" width="800" height="12" fill="#F2EDE3"/>
+
+  <!-- Traffic lights -->
+  <circle cx="20" cy="18" r="5" fill="#E0A8A0"/>
+  <circle cx="38" cy="18" r="5" fill="#E5C589"/>
+  <circle cx="56" cy="18" r="5" fill="#A8C8A0"/>
+
+  <!-- URL pill -->
+  <rect x="280" y="9" width="240" height="18" rx="9" fill="#FAF7F2"/>
+  <text x="400" y="22" font-family="ui-monospace, monospace" font-size="10" fill="#8B877D" text-anchor="middle">molnargaarden.no</text>
+
+  <!-- Site content -->
+  <rect x="0" y="36" width="800" height="464" fill="url(#mln-bg)"/>
+
+  <!-- Logo bar -->
+  <rect x="40" y="64" width="120" height="14" rx="2" fill="#3A2E1F"/>
+  <circle cx="720" cy="71" r="3" fill="#3A2E1F"/>
+  <circle cx="708" cy="71" r="3" fill="#3A2E1F"/>
+  <circle cx="696" cy="71" r="3" fill="#3A2E1F"/>
+
+  <!-- Hero title (two lines) -->
+  <rect x="40" y="130" width="520" height="18" rx="3" fill="#3A2E1F"/>
+  <rect x="40" y="158" width="380" height="18" rx="3" fill="#3A2E1F"/>
+
+  <!-- Subtitle -->
+  <rect x="40" y="200" width="440" height="6" rx="2" fill="#8C7A5E"/>
+  <rect x="40" y="212" width="380" height="6" rx="2" fill="#8C7A5E"/>
+
+  <!-- Photo frame (old phone reference) -->
+  <rect x="540" y="120" width="220" height="160" rx="6" fill="#C4A77A" stroke="#9C8454" stroke-width="1"/>
+  <rect x="560" y="140" width="180" height="120" rx="4" fill="#8C7A5E"/>
+  <circle cx="650" cy="200" r="22" fill="#3A2E1F" opacity="0.4"/>
+  <rect x="635" y="195" width="30" height="20" rx="2" fill="#3A2E1F" opacity="0.6"/>
+
+  <!-- Cards row -->
+  <rect x="40" y="320" width="220" height="120" rx="6" fill="#FDFBF7" stroke="#D4CCB8" stroke-width="1"/>
+  <rect x="60" y="340" width="80" height="8" rx="2" fill="#3A2E1F"/>
+  <rect x="60" y="360" width="180" height="4" rx="1" fill="#8C7A5E"/>
+  <rect x="60" y="372" width="160" height="4" rx="1" fill="#8C7A5E"/>
+  <rect x="60" y="384" width="140" height="4" rx="1" fill="#8C7A5E"/>
+
+  <rect x="290" y="320" width="220" height="120" rx="6" fill="#FDFBF7" stroke="#D4CCB8" stroke-width="1"/>
+  <rect x="310" y="340" width="110" height="8" rx="2" fill="#3A2E1F"/>
+  <rect x="310" y="360" width="180" height="4" rx="1" fill="#8C7A5E"/>
+  <rect x="310" y="372" width="160" height="4" rx="1" fill="#8C7A5E"/>
+
+  <rect x="540" y="320" width="220" height="120" rx="6" fill="#FDFBF7" stroke="#D4CCB8" stroke-width="1"/>
+  <rect x="560" y="340" width="90" height="8" rx="2" fill="#3A2E1F"/>
+  <rect x="560" y="360" width="180" height="4" rx="1" fill="#8C7A5E"/>
+  <rect x="560" y="372" width="140" height="4" rx="1" fill="#8C7A5E"/>
+  <rect x="560" y="384" width="170" height="4" rx="1" fill="#8C7A5E"/>
+</svg>

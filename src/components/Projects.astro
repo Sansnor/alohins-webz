@@ -1,0 +1,253 @@
+---
+const projects = [
+  {
+    name: 'Mølnargården',
+    subtitle: 'Bjugn Bygdatun',
+    year: '2023 — i dag',
+    bransje: 'Kultur · Bygdemuseum',
+    sted: 'Bjugn, Trøndelag',
+    description:
+      'En komplett digital plattform for et levende bygdemuseum — historiske samlinger, arrangementer, kurs og kunstgalleri samlet ett sted. Bygget for at staben enkelt skal kunne oppdatere innholdet selv.',
+    tags: ['CMS', 'Flerspråklig', 'Arrangementer'],
+    image: '/projects/molnargaarden.svg',
+    href: 'https://molnargaarden.no',
+  },
+  {
+    name: 'Kirkekonserter i Fosen',
+    subtitle: 'Konsert- og kulturarrangør',
+    year: '2023 — i dag',
+    bransje: 'Kultur · Konsertarrangør',
+    sted: 'Fosen, Trøndelag',
+    description:
+      'Konsert- og arrangementsside for hele Fosen-regionen — med tydelig kalender, kunstnerprofiler og enkel påmelding. Bygget for å løfte lokal musikkultur fram i lyset.',
+    tags: ['WordPress', 'Event-modul', 'SEO'],
+    image: '/projects/kirkekonserter.svg',
+    href: 'https://kirkekonserter.com',
+  },
+  {
+    name: 'Emils KFZ Klinik',
+    subtitle: 'Bilverksted',
+    year: '2022 — i dag',
+    bransje: 'Bilverksted',
+    sted: 'Tyskland',
+    description:
+      'Tysk bilverkstedsside med fokus på lokal synlighet og tillit. Designet for å konvertere besøkende til verkstedskunder gjennom tydelig kontakt og prisinnsikt.',
+    tags: ['Lokal SEO', 'Tospråklig', 'Konvertering'],
+    image: '/projects/emils-kfz.svg',
+    href: 'https://emils-kfz-klinik.de',
+  },
+];
+---
+
+<section id="prosjekter" class="projects section">
+  <div class="container">
+    <p class="eyebrow projects__eyebrow">
+      <span class="projects__eyedot" aria-hidden="true"></span>
+      Utvalgte prosjekter
+    </p>
+    <h2 class="projects__heading">Tre kunder i tre verdener.</h2>
+    <p class="projects__lead">
+      Fra et bygdemuseum i Bjugn til et bilverksted i Tyskland —
+      alle bygget med samme prinsipp: ærlig design som faktisk gjør jobben.
+    </p>
+
+    <div class="projects__grid">
+      {projects.map((project) => (
+        <article class="project">
+          <a href={project.href} target="_blank" rel="noopener noreferrer" class="project__link">
+            <div class="project__media">
+              <img
+                src={project.image}
+                alt={`Skjermbilde fra ${project.name}`}
+                loading="lazy"
+                width="800"
+                height="500"
+              />
+            </div>
+
+            <div class="project__body">
+              <div class="project__meta">
+                <span class="project__meta-item">{project.bransje}</span>
+                <span class="project__meta-sep" aria-hidden="true">·</span>
+                <span class="project__meta-item">{project.sted}</span>
+              </div>
+
+              <h3 class="project__name">
+                {project.name}
+                <span class="project__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 11L11 5M11 5H6M11 5V10" />
+                  </svg>
+                </span>
+              </h3>
+
+              <p class="project__desc">{project.description}</p>
+
+              <div class="project__tags">
+                {project.tags.map((tag) => (
+                  <span class="project__tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .projects__eyedot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+
+  .projects__heading {
+    font-size: var(--text-h1);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    max-width: 20ch;
+    margin-bottom: var(--space-4);
+  }
+
+  .projects__lead {
+    font-size: var(--text-body-lg);
+    line-height: var(--leading-normal);
+    color: var(--color-text-secondary);
+    max-width: 40em;
+    margin-bottom: var(--space-12);
+  }
+
+  /* —— Grid —— */
+  .projects__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  /* —— Card —— */
+  .project__link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
+  }
+
+  .project__media {
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    aspect-ratio: 8 / 5;
+    margin-bottom: var(--space-6);
+    transition: transform var(--duration-normal) var(--ease-out),
+                box-shadow var(--duration-normal) var(--ease-out);
+  }
+
+  .project__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform var(--duration-slow) var(--ease-out);
+  }
+
+  .project__link:hover .project__media {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px -16px rgba(26, 26, 26, 0.18);
+  }
+
+  .project__link:hover .project__media img {
+    transform: scale(1.02);
+  }
+
+  /* —— Body —— */
+  .project__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-small);
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-2);
+  }
+
+  .project__meta-sep {
+    color: var(--color-border-strong);
+  }
+
+  .project__name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    font-size: var(--text-h3);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-3);
+  }
+
+  .project__arrow {
+    flex-shrink: 0;
+    color: var(--color-text-tertiary);
+    transition: color var(--duration-fast) var(--ease-out),
+                transform var(--duration-fast) var(--ease-out);
+  }
+
+  .project__link:hover .project__arrow {
+    color: var(--color-accent);
+    transform: translate(2px, -2px);
+  }
+
+  .project__desc {
+    font-size: var(--text-small);
+    line-height: var(--leading-normal);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+    flex: 1;
+  }
+
+  .project__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .project__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.02em;
+    color: var(--color-text-secondary);
+    background-color: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+  }
+
+  /* —— Responsive —— */
+  @media (max-width: 980px) {
+    .projects__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+      max-width: 540px;
+      margin-inline: auto;
+    }
+  }
+</style>

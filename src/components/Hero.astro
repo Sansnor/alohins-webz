@@ -1,0 +1,182 @@
+---
+import Button from './Button.astro';
+---
+
+<section class="hero">
+  <div class="container hero__inner">
+    <p class="eyebrow hero__eyebrow reveal" style="animation-delay: 100ms;">
+      <span class="hero__dot" aria-hidden="true"></span>
+      Webdesign · Rissa, Trøndelag
+    </p>
+
+    <h1 class="hero__title">
+      <span class="hero__line reveal" style="animation-delay: 200ms;">Nettsider som</span>
+      <span class="hero__line reveal" style="animation-delay: 320ms;">
+        faktisk
+        <span class="hero__accent">
+          gjør jobben
+          <svg class="hero__underline" viewBox="0 0 320 12" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M2 8 Q 80 2, 160 6 T 318 5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+          </svg>
+        </span>.
+      </span>
+    </h1>
+
+    <p class="hero__sub reveal" style="animation-delay: 480ms;">
+      Skreddersydde nettsider for små bedrifter, menigheter og kulturarbeidere
+      — bygget fra Rissa, levert til hele Norge.
+    </p>
+
+    <div class="hero__actions reveal" style="animation-delay: 600ms;">
+      <Button href="#prosjekter" variant="primary">Se prosjekter</Button>
+      <Button href="#kontakt" variant="ghost">Ta kontakt</Button>
+    </div>
+
+    <div class="hero__meta reveal" style="animation-delay: 760ms;">
+      <span class="hero__meta-item">
+        <span class="hero__meta-dot" aria-hidden="true"></span>
+        Tilgjengelig for nye prosjekter
+      </span>
+      <span class="hero__meta-divider" aria-hidden="true">·</span>
+      <span class="hero__meta-item">Svar innen 24 timer</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: clamp(3rem, 8vw, 6rem);
+    padding-bottom: clamp(4rem, 10vw, 8rem);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero__inner {
+    max-width: 1100px;
+  }
+
+  .hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-8);
+  }
+
+  .hero__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+
+  /* —— Title —— */
+  .hero__title {
+    font-size: var(--text-display);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-display);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-8);
+    text-wrap: balance;
+  }
+
+  .hero__line {
+    display: block;
+  }
+
+  .hero__accent {
+    position: relative;
+    display: inline-block;
+    color: var(--color-text-primary);
+  }
+
+  .hero__underline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.05em;
+    width: 100%;
+    height: 0.18em;
+    color: var(--color-accent);
+    opacity: 0;
+    animation: underline-in 800ms var(--ease-out) 1000ms forwards;
+  }
+
+  @keyframes underline-in {
+    from {
+      opacity: 0;
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    to {
+      opacity: 1;
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+
+  /* —— Sub —— */
+  .hero__sub {
+    max-width: 36em;
+    font-size: var(--text-body-lg);
+    line-height: var(--leading-normal);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-12);
+    text-wrap: pretty;
+  }
+
+  /* —— Actions —— */
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-16);
+  }
+
+  /* —— Meta strip —— */
+  .hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--text-small);
+    color: var(--color-text-tertiary);
+  }
+
+  .hero__meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .hero__meta-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #4ABE6F;
+    box-shadow: 0 0 0 3px rgba(74, 190, 111, 0.18);
+    animation: pulse 2.4s var(--ease-in-out) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 3px rgba(74, 190, 111, 0.18);
+    }
+    50% {
+      box-shadow: 0 0 0 6px rgba(74, 190, 111, 0.08);
+    }
+  }
+
+  .hero__meta-divider {
+    color: var(--color-border-strong);
+  }
+
+  @media (max-width: 540px) {
+    .hero__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>

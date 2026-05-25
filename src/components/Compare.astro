@@ -1,0 +1,223 @@
+---
+const comparisons = [
+  {
+    bad: 'Lange ventetider og mange møter',
+    good: 'Direkte kontakt, raske svar',
+  },
+  {
+    bad: 'Du blir låst til deres system',
+    good: 'Du eier nettsiden 100%',
+  },
+  {
+    bad: 'Faste maler, lite tilpasning',
+    good: 'Skreddersydd for din bedrift',
+  },
+  {
+    bad: 'Skjulte kostnader for endringer',
+    good: 'Tydelige priser, ingen overraskelser',
+  },
+  {
+    bad: 'Anonyme team du aldri møter',
+    good: 'Du jobber direkte med meg',
+  },
+];
+---
+
+<section id="sammenligning" class="compare section">
+  <div class="container">
+    <p class="eyebrow compare__eyebrow">
+      <span class="compare__eyedot" aria-hidden="true"></span>
+      Hvorfor velge meg
+    </p>
+    <h2 class="compare__heading">
+      Direkte kontakt.<br />Ingen byråspråk.
+    </h2>
+    <p class="compare__lead">
+      Du betaler ikke for tre mellomledd og en prosjektleder.
+      Du jobber direkte med personen som faktisk bygger nettsiden din.
+    </p>
+
+    <div class="compare__table">
+      <div class="compare__head">
+        <div class="compare__head-cell compare__head-cell--bad">Vanlig nettbyrå</div>
+        <div class="compare__head-cell compare__head-cell--good">Alohins Webz</div>
+      </div>
+
+      {comparisons.map((row) => (
+        <div class="compare__row">
+          <div class="compare__cell compare__cell--bad">
+            <span class="compare__icon compare__icon--bad" aria-hidden="true">
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+                <path d="M4 4l8 8M12 4l-8 8" />
+              </svg>
+            </span>
+            <span>{row.bad}</span>
+          </div>
+          <div class="compare__cell compare__cell--good">
+            <span class="compare__icon compare__icon--good" aria-hidden="true">
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 8l3 3 7-7" />
+              </svg>
+            </span>
+            <span>{row.good}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .compare {
+    background-color: var(--color-bg-inverse);
+    color: var(--color-text-inverse);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle terracotta glow as visual texture */
+  .compare::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(199, 91, 60, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .container { position: relative; z-index: 1; }
+
+  .compare__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+    color: var(--color-text-tertiary);
+  }
+
+  .compare__eyedot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+
+  .compare__heading {
+    font-size: var(--text-h1);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-inverse);
+    margin-bottom: var(--space-4);
+    max-width: 16ch;
+  }
+
+  .compare__lead {
+    font-size: var(--text-body-lg);
+    line-height: var(--leading-normal);
+    color: rgba(250, 247, 242, 0.7);
+    max-width: 40em;
+    margin-bottom: var(--space-12);
+  }
+
+  /* —— Table —— */
+  .compare__table {
+    border: 1px solid rgba(250, 247, 242, 0.12);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background-color: rgba(250, 247, 242, 0.02);
+  }
+
+  .compare__head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid rgba(250, 247, 242, 0.12);
+  }
+
+  .compare__head-cell {
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-eyebrow);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .compare__head-cell--bad {
+    color: rgba(250, 247, 242, 0.5);
+    border-right: 1px solid rgba(250, 247, 242, 0.12);
+  }
+
+  .compare__head-cell--good {
+    color: var(--color-accent);
+  }
+
+  .compare__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid rgba(250, 247, 242, 0.08);
+  }
+
+  .compare__row:last-child {
+    border-bottom: none;
+  }
+
+  .compare__cell {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    font-size: var(--text-body);
+    line-height: var(--leading-snug);
+  }
+
+  .compare__cell--bad {
+    color: rgba(250, 247, 242, 0.55);
+    border-right: 1px solid rgba(250, 247, 242, 0.08);
+  }
+
+  .compare__cell--good {
+    color: var(--color-text-inverse);
+    font-weight: var(--weight-medium);
+  }
+
+  .compare__icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    margin-top: 2px;
+  }
+
+  .compare__icon--bad {
+    background-color: rgba(250, 247, 242, 0.06);
+    color: rgba(250, 247, 242, 0.4);
+  }
+
+  .compare__icon--good {
+    background-color: rgba(199, 91, 60, 0.18);
+    color: var(--color-accent);
+  }
+
+  /* —— Mobile —— */
+  @media (max-width: 720px) {
+    .compare__head,
+    .compare__row {
+      grid-template-columns: 1fr;
+    }
+
+    .compare__head-cell--bad,
+    .compare__cell--bad {
+      border-right: none;
+      border-bottom: 1px solid rgba(250, 247, 242, 0.08);
+    }
+
+    .compare__row {
+      border-bottom: 2px solid rgba(250, 247, 242, 0.12);
+    }
+  }
+</style>
