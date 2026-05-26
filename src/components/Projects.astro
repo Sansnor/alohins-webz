@@ -249,5 +249,15 @@ const projects = [
       max-width: 540px;
       margin-inline: auto;
     }
+
+    /* On mobile, show name & description first, image after */
+    .project__link {
+      flex-direction: column-reverse;
+    }
+
+    .project__media {
+      margin-bottom: 0;
+      margin-top: var(--space-6);
+    }
   }
 </style>
