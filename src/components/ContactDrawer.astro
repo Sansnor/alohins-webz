@@ -7,7 +7,7 @@
 //
 //  Lukkes ved: Escape, klikk på overlay, eller lukk-knapp.
 // ============================================
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mlgvokqd'; // ← Lim inn din Formspree URL her (se README)
+const FORMSPREE_ENDPOINT = ''; // ← Lim inn din Formspree URL her (se README)
 
 const email = 'post@alohins-webz.no';
 const phone = '+47 46 64 78 51';
@@ -112,7 +112,29 @@ const formMethod = FORMSPREE_ENDPOINT ? 'POST' : 'GET';
           Du får svar på e-post innen 24 timer.
           Ingen videresending, ingen nyhetsbrev.
         </p>
+
+        <p class="drawer__error" data-error hidden>
+          Noe gikk galt. Prøv igjen, eller send e-post direkte til
+          <a href={`mailto:${email}`}>{email}</a>.
+        </p>
       </form>
+
+      {/* Success state — vises etter vellykket innsending */}
+      <div class="drawer__success" data-success hidden aria-live="polite">
+        <div class="drawer__success-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+        </div>
+        <h3 class="drawer__success-title">Takk!</h3>
+        <p class="drawer__success-text">
+          Meldingen er sendt. Jeg svarer som regel innen 24 timer —
+          ofte raskere på hverdager.
+        </p>
+        <button type="button" class="drawer__submit" data-close-contact>
+          Lukk
+        </button>
+      </div>
     </div>
   </aside>
 </div>
@@ -383,6 +405,71 @@ const formMethod = FORMSPREE_ENDPOINT ? 'POST' : 'GET';
     margin-top: var(--space-3);
   }
 
+  /* ——— Error message under form ——— */
+  .drawer__error {
+    margin-top: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    background-color: rgba(199, 91, 60, 0.12);
+    border: 1px solid rgba(199, 91, 60, 0.35);
+    border-radius: var(--radius-md);
+    font-size: var(--text-small);
+    line-height: var(--leading-snug);
+    color: var(--color-text-inverse);
+  }
+
+  .drawer__error a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  /* ——— Success state (replaces form) ——— */
+  .drawer__success {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding-top: var(--space-8);
+  }
+
+  .drawer__success-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background-color: rgba(74, 190, 111, 0.15);
+    color: #4ABE6F;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-2);
+  }
+
+  .drawer__success-title {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-inverse);
+    margin: 0;
+  }
+
+  .drawer__success-text {
+    font-size: var(--text-body);
+    line-height: var(--leading-normal);
+    color: rgba(250, 247, 242, 0.7);
+    margin: 0;
+  }
+
+  /* When success is shown, hide the form */
+  .drawer__form[hidden] {
+    display: none;
+  }
+
+  /* ——— Submit button disabled state ——— */
+  .drawer__submit[disabled] {
+    opacity: 0.6;
+    cursor: wait;
+  }
+
   /* ——— Scrollbar styling for the drawer body ——— */
   .drawer__body::-webkit-scrollbar {
     width: 6px;
@@ -424,19 +511,34 @@ const formMethod = FORMSPREE_ENDPOINT ? 'POST' : 'GET';
     if (!drawer) return;
 
     const panel = drawer.querySelector<HTMLElement>('.drawer__panel');
+    const form = drawer.querySelector<HTMLFormElement>('.drawer__form');
+    const successBlock = drawer.querySelector<HTMLElement>('[data-success]');
+    const errorBlock = drawer.querySelector<HTMLElement>('[data-error]');
+    const submitBtn = drawer.querySelector<HTMLButtonElement>('.drawer__submit');
     const openTriggers = document.querySelectorAll<HTMLElement>('[data-open-contact]');
     const closeTriggers = drawer.querySelectorAll<HTMLElement>('[data-close-contact]');
 
     let lastFocused: HTMLElement | null = null;
+
+    const resetForm = () => {
+      if (!form || !successBlock || !errorBlock) return;
+      form.hidden = false;
+      successBlock.hidden = true;
+      errorBlock.hidden = true;
+      form.reset();
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send melding <span class="drawer__submit-arrow" aria-hidden="true">↘</span>';
+      }
+    };
 
     const openDrawer = (e?: Event) => {
       if (e) e.preventDefault();
       lastFocused = document.activeElement as HTMLElement;
       drawer.setAttribute('aria-hidden', 'false');
       document.body.classList.add('drawer-open');
-      // Focus the panel for screen readers, then move into first field
       requestAnimationFrame(() => {
-        const firstInput = drawer.querySelector<HTMLElement>('input, textarea, button');
+        const firstInput = drawer.querySelector<HTMLElement>('input:not([type="hidden"]), textarea, button');
         if (firstInput) firstInput.focus();
       });
     };
@@ -445,6 +547,8 @@ const formMethod = FORMSPREE_ENDPOINT ? 'POST' : 'GET';
       drawer.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('drawer-open');
       if (lastFocused) lastFocused.focus();
+      // Reset form etter at panelet er lukket, så brukeren ikke ser hoppet
+      setTimeout(resetForm, 500);
     };
 
     openTriggers.forEach((t) => t.addEventListener('click', openDrawer));
@@ -457,15 +561,19 @@ const formMethod = FORMSPREE_ENDPOINT ? 'POST' : 'GET';
       }
     });
 
-    // Enkel focus trap — Tab roterer mellom focusable inne i panelet
+    // Enkel focus trap
     drawer.addEventListener('keydown', (e: KeyboardEvent) => {
       if (e.key !== 'Tab' || !panel) return;
       const focusables = panel.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        'a[href], button:not([disabled]):not([hidden]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
       );
-      if (focusables.length === 0) return;
-      const first = focusables[0];
-      const last = focusables[focusables.length - 1];
+      // Filter ut elementer som er skjult (i hidden-container)
+      const visible = Array.from(focusables).filter((el) => {
+        return el.offsetParent !== null;
+      });
+      if (visible.length === 0) return;
+      const first = visible[0];
+      const last = visible[visible.length - 1];
       if (e.shiftKey && document.activeElement === first) {
         e.preventDefault();
         last.focus();
@@ -474,5 +582,49 @@ const formMethod = FORMSPREE_ENDPOINT ? 'POST' : 'GET';
         first.focus();
       }
     });
+
+    // ——— AJAX form submission ———
+    // Hvis action peker på Formspree (https), send med fetch og vis success
+    // uten å forlate siden. Hvis action er mailto, la nettleseren håndtere det.
+    if (form && submitBtn && successBlock && errorBlock) {
+      form.addEventListener('submit', async (e) => {
+        const action = form.getAttribute('action') || '';
+        // Mailto eller annet ikke-http → la nettleseren håndtere som vanlig
+        if (!action.startsWith('http')) return;
+
+        e.preventDefault();
+        errorBlock.hidden = true;
+
+        // Loading state
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sender…';
+
+        try {
+          const formData = new FormData(form);
+          const response = await fetch(action, {
+            method: 'POST',
+            body: formData,
+            headers: { Accept: 'application/json' },
+          });
+
+          if (response.ok) {
+            // Suksess — gjem skjema, vis takk-blokk
+            form.hidden = true;
+            successBlock.hidden = false;
+            // Flytt fokus til Lukk-knappen for tilgjengelighet
+            const closeBtn = successBlock.querySelector<HTMLElement>('button');
+            if (closeBtn) closeBtn.focus();
+          } else {
+            // Server svarte med feil
+            throw new Error(`HTTP ${response.status}`);
+          }
+        } catch (err) {
+          // Vis feilmelding, la skjemaet stå slik at brukeren kan prøve igjen
+          errorBlock.hidden = false;
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Send melding <span class="drawer__submit-arrow" aria-hidden="true">↘</span>';
+        }
+      });
+    }
   })();
 </script>
