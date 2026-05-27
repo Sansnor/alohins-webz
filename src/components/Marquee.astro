@@ -1,0 +1,89 @@
+---
+// ============================================
+//  MARQUEE — begrepsrik bånd som ruller over skjermen.
+//  Inspirert av Cure: gjentakelse av kjernebudskap = forsterket minne.
+// ============================================
+const phrases = [
+  'Fast pris',
+  'Ingen byråspråk',
+  'Du eier alt',
+  'Direkte kontakt',
+  'Svar innen 24 timer',
+  'Ingen bindingstid',
+];
+
+// Vi gjentar setningene 4 ganger for å sikre at båndet alltid er fullt
+// uavhengig av skjermbredde — animasjonen kjører i loop.
+const repeated = Array.from({ length: 4 }, () => phrases).flat();
+---
+
+<section class="marquee" aria-label="Hva du får hos Alohins Webz">
+  <div class="marquee__track" role="presentation">
+    {repeated.map((phrase) => (
+      <span class="marquee__item">
+        <span class="marquee__phrase">{phrase}</span>
+        <span class="marquee__dot" aria-hidden="true">·</span>
+      </span>
+    ))}
+  </div>
+</section>
+
+<style>
+  .marquee {
+    background-color: var(--color-bg-inverse);
+    color: var(--color-text-inverse);
+    padding-block: var(--space-6);
+    overflow: hidden;
+    border-block: 1px solid var(--color-border-dark);
+  }
+
+  .marquee__track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: marquee-scroll 38s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-6);
+    padding-inline: var(--space-6);
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-tight);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .marquee__phrase {
+    color: var(--color-text-inverse);
+  }
+
+  .marquee__dot {
+    color: var(--color-accent);
+    font-size: 1.5em;
+    line-height: 1;
+  }
+
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* Hold pause på interaksjon — bedre lesbarhet for brukere */
+  .marquee:hover .marquee__track {
+    animation-play-state: paused;
+  }
+
+  /* Respekter brukere som ønsker redusert bevegelse */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+</style>

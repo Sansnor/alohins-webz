@@ -1,18 +1,8 @@
 ---
-const facts = [
-  {
-    number: '2018',
-    label: 'startet å bygge nettsider',
-  },
-  {
-    number: '3+ land',
-    label: 'kunder fra Norge og Tyskland',
-  },
-  {
-    number: '1 person',
-    label: 'du jobber direkte med',
-  },
-];
+// ============================================
+//  ABOUT — personlig fortelling, ikke faktablokk.
+//  Tallene har flyttet inn i Stats-komponenten over.
+// ============================================
 ---
 
 <section id="om" class="about section">
@@ -44,15 +34,10 @@ const facts = [
           Du betaler for det du trenger — og velger selv om du vil ha
           drift og hosting hos meg etterpå.
         </p>
-
-        <div class="about__facts">
-          {facts.map((fact) => (
-            <div class="fact">
-              <div class="fact__number">{fact.number}</div>
-              <div class="fact__label">{fact.label}</div>
-            </div>
-          ))}
-        </div>
+        <p class="about__signature">
+          <span class="about__signature-mark" aria-hidden="true">↘</span>
+          Bygget med omhu fra Rissa, Trøndelag.
+        </p>
       </div>
 
     </div>
@@ -110,33 +95,22 @@ const facts = [
     max-width: 50ch;
   }
 
-  .about__body p:last-of-type {
-    margin-bottom: var(--space-12);
-  }
-
-  /* —— Facts row —— */
-  .about__facts {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-4);
-    padding-top: var(--space-8);
+  .about__signature {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding-top: var(--space-6);
+    margin-top: var(--space-4);
     border-top: 1px solid var(--color-border);
-  }
-
-  .fact__number {
-    font-size: 1.625rem;
-    font-weight: var(--weight-medium);
-    letter-spacing: var(--tracking-tight);
-    color: var(--color-text-primary);
-    line-height: 1;
-    margin-bottom: var(--space-2);
-    font-feature-settings: 'tnum';
-  }
-
-  .fact__label {
     font-size: var(--text-small);
-    line-height: var(--leading-snug);
     color: var(--color-text-tertiary);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .about__signature-mark {
+    color: var(--color-accent);
+    font-size: 1.25rem;
   }
 
   /* —— Responsive —— */
@@ -144,11 +118,6 @@ const facts = [
     .about__grid {
       grid-template-columns: 1fr;
       gap: var(--space-8);
-    }
-
-    .about__facts {
-      grid-template-columns: 1fr;
-      gap: var(--space-6);
     }
   }
 </style>

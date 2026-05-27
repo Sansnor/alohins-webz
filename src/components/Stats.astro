@@ -1,0 +1,89 @@
+---
+// ============================================
+//  STATS — store tall som beviser, ikke forteller.
+//  Cure-inspirert: tall som dominerer skjermen, etiketter som hvisker.
+// ============================================
+const stats = [
+  {
+    number: '1996',
+    label: 'Fascinasjon for web startet',
+  },
+  {
+    number: '2018',
+    label: 'Første kunde, første lansering',
+  },
+  {
+    number: '3+',
+    label: 'Land med fornøyde kunder',
+  },
+  {
+    number: '100%',
+    label: 'Fast pris — alltid',
+  },
+];
+---
+
+<section class="stats" aria-label="Tall som forteller">
+  <div class="container">
+    <div class="stats__grid">
+      {stats.map((stat) => (
+        <div class="stat">
+          <div class="stat__number">{stat.number}</div>
+          <div class="stat__label">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats {
+    padding-block: clamp(3rem, 8vw, 6rem);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .stats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-8);
+    align-items: end;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .stat__number {
+    font-size: clamp(2.75rem, 6vw, 4.5rem);
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--tracking-display);
+    line-height: 0.95;
+    color: var(--color-text-primary);
+    font-feature-settings: 'tnum';
+  }
+
+  .stat__label {
+    font-size: var(--text-small);
+    line-height: var(--leading-snug);
+    color: var(--color-text-tertiary);
+    max-width: 22ch;
+  }
+
+  /* —— Responsive —— */
+  @media (max-width: 860px) {
+    .stats__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
