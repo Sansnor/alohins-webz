@@ -463,7 +463,10 @@ const formMethod = FORMSPREE_ENDPOINT ? 'POST' : 'GET';
   .drawer__form[hidden] {
     display: none;
   }
-
+  /* Skjul success-blokken til skjemaet er sendt */
+  .drawer__success[hidden] {
+    display: none;
+  }
   /* ——— Submit button disabled state ——— */
   .drawer__submit[disabled] {
     opacity: 0.6;
